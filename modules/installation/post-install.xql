@@ -38,10 +38,4 @@ declare function local:add-index-configuration-file($collection-path as xs:strin
 	)
 };
 
-(
-	local:add-index-configuration-file($config:data-dir)
-	,
-	local:add-index-configuration-file($config:bibliography-path)
-	,
-	local:add-index-configuration-file($config:quotations-path)
-)
+local:add-index-configuration-file($config:data-dir)
