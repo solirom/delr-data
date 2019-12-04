@@ -1,6 +1,6 @@
 xquery version "3.1";
 
-import module namespace config = "http://lingv.ro/ns/dlr-data-app/configuration/" at "modules/configuration/configuration.xqm";
+import module namespace config = "http://solirom.ro/ns/delr-data-app/configuration/" at "modules/configuration/configuration.xqm";
 
 declare variable $home external;
 declare variable $target external;
