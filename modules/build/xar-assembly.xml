@@ -15,18 +15,13 @@
 	<tag>lingv.ro</tag>
 	<category id="libs">Libraries</category>
 	<category id="exist">eXist extensions</category>
-	<dependency processor="http://exist-db.org" semver-min="4.7.0" />
+	<dependency processor="http://exist-db.org" semver-min="5.0.0" />
 	<fileSets>
 		<fileSet>
 			<directory>${basedir}</directory>
 			<excludes>
 				<exclude>modules/build/</exclude>
-				<exclude>target/</exclude>
-				<exclude>pom.xml</exclude>
 			</excludes>
 		</fileSet>
 	</fileSets>
-
-
-
 </package>

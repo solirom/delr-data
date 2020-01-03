@@ -5,7 +5,7 @@
 
 	<groupId>ro.lingv</groupId>
 	<artifactId>delr-data</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<packaging>pom</packaging>
 	<url>http://dlri.ro</url>
 
@@ -43,7 +43,7 @@
 			<plugin>
 				<groupId>ro.kuberam.maven.plugins</groupId>
 				<artifactId>kuberam-expath-plugin</artifactId>
-				<version>0.6.0</version>
+				<version>0.6.1</version>
 				<executions>
 					<execution>
 						<id>create-build</id>
