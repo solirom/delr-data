@@ -23,12 +23,23 @@
             <xsl:variable name="start" select="$delimiter-indexes[$i] + 1" />
             <xsl:variable name="length" select="$delimiter-indexes[$i + 1] - $start" />
             <xsl:variable name="html-entry" select="subsequence($paragraphs, $start, $length)" />
-            <xsl:variable name="uuid" select="1007 + $i"/>
-            <xsl:result-document href="{concat('html/', $uuid, '.html')}">
-                <article xmlns="http://www.w3.org/1999/xhtml">
-                    <xsl:copy-of select="$html-entry" />
-                </article>
-            </xsl:result-document>
+            <xsl:if test="$html-entry/*">
+                <xsl:variable name="uuid" select="1007 + $i"/>
+                <xsl:variable name="headword-string" select="analyze-string(substring-before($html-entry/*[1]/string(), ' '), '\d*')"/>
+                <xsl:variable name="headword" select="string-join($headword-string/non-match[. != ''])"/>
+                <xsl:variable name="homonym-number" select="$headword-string/match[. != '']"/>
+                <xsl:result-document href="{concat('html/', $uuid, '.html')}">
+                    <article xmlns="http://www.w3.org/1999/xhtml" id="delr-{$uuid}">
+                        <xsl:copy-of select="$html-entry" />
+                    </article>
+                </xsl:result-document>
+                <xsl:result-document href="{concat('json/', $uuid, '.json')}">
+                    <xsl:text>{</xsl:text>
+                    <xsl:text>"l":"</xsl:text><xsl:value-of select="$headword"/><xsl:text>"</xsl:text>
+                    <xsl:text>"s":"</xsl:text><xsl:value-of select="concat($headword, $homonym-number)"/><xsl:text>"</xsl:text>
+                    <xsl:text>}</xsl:text>
+                </xsl:result-document>                
+            </xsl:if>            
         </xsl:for-each>        
     </xsl:template>
     
